@@ -21,7 +21,7 @@ public:
                     slow=slow->next;
                     fast=fast->next;
                 }
-                return fast;
+                return slow;
             }
         }
         return nullptr;
