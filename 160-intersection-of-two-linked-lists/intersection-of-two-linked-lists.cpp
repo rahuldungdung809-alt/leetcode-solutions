@@ -9,8 +9,26 @@
 class Solution {
 public:
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        // OPTIMAL SOLUTION (TWO POINTER)
+        ListNode* pA=headA;
+        ListNode* pB=headB;
+        while(pA!=pB){
+            if(pA==nullptr){
+                pA=headB;
+            }
+            else{
+                pA=pA->next;
+            }
+            if(pB==nullptr){
+                pB=headA;
+            }
+            else{
+                pB=pB->next;
+            }
+        }
+        return pA;
         //BETTER SOLUTION (USING HASH SET)
-        unordered_set<ListNode*>st;
+        /*unordered_set<ListNode*>st;
         ListNode* temp=headA;
         while(temp!=nullptr){
             st.insert(temp);
@@ -23,7 +41,7 @@ public:
             }
             temp=temp->next;
         }
-        return NULL;
+        return NULL;*/
         //BRUTE FORCE APPROACH (COMPARE A WITH B)
         /*ListNode* tempA=headA;
         while(tempA!=nullptr){
