@@ -1,8 +1,29 @@
 class Solution {
 public:
     double myPow(double x, int n) {
+        //BETTER SOLUTION (USING RECRURSSION)
+        long M=n;
+        if(M<0){
+            x=1/x;
+            M=-M;
+        }
+        return power(x,M);
+    }
+    private: 
+    double power(double x,long n){
+        if (n==0){
+            return 1;
+        }
+        double half=power(x,n/2);
+        if(n%2==0){
+            return half*half;
+        }
+        else{
+            return half*half*x;
+        }
+    }
         //BRUTE FORCE SOLUTION
-        long N=n;
+        /*long N=n;
         if(N<0){
             x=1/x;
             N=-N;
@@ -16,7 +37,7 @@ public:
             x*=x;
             N>>=1;
         }
-        return ans;
+        return ans;*/
         //*****************************
         /*if (n==0)return 1.0;
         if (x==0)return 0.0;
@@ -39,5 +60,5 @@ public:
         return ans;*/
 
         
-    }
+    //}
 };
