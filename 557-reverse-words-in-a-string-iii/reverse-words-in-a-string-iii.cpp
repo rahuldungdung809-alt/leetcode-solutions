@@ -4,6 +4,16 @@ public:
         s.push_back(' ');
         int start=0;
         for(int i=0;i<s.size();i++){
+            if(i==s.size() || s[i]==' '){
+                reverse(s.begin()+start,s.begin()+i);
+                start=i+1;
+            }
+        }
+        s.pop_back();
+        return s;
+        /*s.push_back(' ');
+        int start=0;
+        for(int i=0;i<s.size();i++){
             if(s[i]==' '){
                 int left=start;
                 int right=i-1;
@@ -17,6 +27,6 @@ public:
             }
         }
         s.pop_back();
-        return s;
+        return s;*/
     }
 };
