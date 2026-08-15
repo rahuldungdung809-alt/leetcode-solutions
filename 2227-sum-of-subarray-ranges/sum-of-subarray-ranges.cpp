@@ -1,6 +1,10 @@
 class Solution {
 public:
-    long long subArrayRanges(vector<int>& nums) {
+    long long subArrayRanges(vector<int>& nums) {                                                                                    
+                                                                                                                                                                                                                                                   
+
+
+       // BRUTE FORCE TC:O(N^2) SC:O(1)
         long long sum=0;
         int n=nums.size();
         for(int i=0;i<n;i++){
