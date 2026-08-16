@@ -5,7 +5,7 @@ public:
         int n=s.size();
         int ans=0;
         int left=0;
-        set<char>st;
+        unordered_set<char>st;
         for(int right=0;right<n;right++){
             
             while(st.count(s[right])){
