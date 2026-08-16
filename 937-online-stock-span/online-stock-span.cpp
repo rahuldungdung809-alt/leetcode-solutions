@@ -1,13 +1,24 @@
 class StockSpanner {
 public:
-vector<int>prices;
+    //vector<int>prices;
+    vector<pair<int,int>>st;
     StockSpanner() {
         
         
     }
     
     int next(int price) {
-        prices.push_back(price);
+        //BETTER SOLUTION 
+        int span=1;
+        int i=st.size()-1;
+        while(i>=0 && st[i].first<=price){
+            span+=st[i].second;
+            i-=st[i].second;
+        }
+        st.push_back({price,span});
+        return span;
+        //BRUTE FORC SOLUTION TC:O(N)  SC:O(N)
+        /*prices.push_back(price);
         int span=1;
         for(int i=prices.size()-2;i>=0;i--){
             if(prices[i]<=price){
@@ -17,7 +28,7 @@ vector<int>prices;
                 break;
             }
         }
-        return span;
+        return span;*/
         
     }
 };
