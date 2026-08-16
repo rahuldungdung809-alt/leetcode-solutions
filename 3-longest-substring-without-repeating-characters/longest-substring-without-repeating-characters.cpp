@@ -1,8 +1,22 @@
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
-        //BETTER SOLUTION 
         int n=s.size();
+        int ans=0;
+        int left=0;
+        vector<int>freq(256,0);
+        for(int right=0;right<n;right++){
+            
+            while(freq[s[right]]>0){
+                freq[s[left]]--;
+                left++;
+            }
+            freq[s[right]]++;
+            ans=max(ans,right-left+1);
+        }
+        return ans;
+        //BETTER SOLUTION 
+        /*int n=s.size();
         int ans=0;
         int left=0;
         unordered_set<char>st;
@@ -15,7 +29,7 @@ public:
             st.insert(s[right]);
             ans=max(ans,right-left+1);
         }
-        return ans;
+        return ans;*/
 
         // BRUTE FORCE SOLUTION TC:O(N^2)  SC:O(N)
         /*int n=s.size();
