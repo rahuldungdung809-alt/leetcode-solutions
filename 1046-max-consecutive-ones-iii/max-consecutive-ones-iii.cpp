@@ -1,7 +1,7 @@
 class Solution {
 public:
     int longestOnes(vector<int>& nums, int k) {
-        //OPTIMAL SOLUTION 
+        //OPTIMAL SOLUTION TC:O(N)  SC:O(1)
         int left=0;
         int zero=0;
         int maxlen=0;
