@@ -1,7 +1,7 @@
 class Solution {
 public:
     int numberOfSubstrings(string s) {
-        //OPTIMAL SOLUTION 
+        //OPTIMAL SOLUTION TC:O(N)  SC:O(1)
         vector<int>freq(3,0);
         int res=0;
         int left=0;
