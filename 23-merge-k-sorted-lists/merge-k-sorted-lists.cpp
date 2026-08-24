@@ -10,7 +10,7 @@
  */
 class Solution {
 public:
-    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+    /*ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
         if (list1 == nullptr)
             return list2;
 
@@ -38,13 +38,43 @@ public:
         ListNode* L1=PartionandMerge(start,mid,lists);
         ListNode* L2=PartionandMerge(mid+1,end,lists);
         return mergeTwoLists(L1,L2);
-    }
+    }*/
+    struct compare{
+        bool operator()(ListNode* a,ListNode* b){
+            return a->val > b->val;
+        }
+    };
     ListNode* mergeKLists(vector<ListNode*>& lists) {
-        int k=lists.size();
+        //OPTIMAL APPROACH
+        priority_queue<ListNode*,vector<ListNode*>,compare>pq;
+        for(ListNode* head:lists){
+            if(head!=NULL){
+                pq.push(head);
+            }
+        }
+        ListNode* dummy=new ListNode(-1);
+        ListNode* temp=dummy;
+        while(!pq.empty()){
+            ListNode* node=pq.top();
+            pq.pop();
+            temp->next=node;
+            temp=temp->next;
+            if(node->next !=NULL){
+                pq.push(node->next);
+            }
+        }
+        return dummy->next;
+
+
+
+
+        //DEVIDE AND MERGE TC:O(N LOG K)   SC=LOG K
+        /*int k=lists.size();
         if(k==0){
             return NULL;
         }
-        return PartionandMerge(0,k-1,lists);
+        return PartionandMerge(0,k-1,lists);*/
+
         //BRUTE FORCE SOLUTION TC:O(N LOG N)   SC:O(N)
         /*vector<int>arr;
         for(ListNode* head:lists){
