@@ -1,57 +1,24 @@
 class Solution {
 public:
     bool checkValidString(string s) {
-        int minOpen = 0, maxOpen = 0;
-
-        // Traverse each character in the string
-        for (char c : s) {
-            if (c == '(') {
-                minOpen++;
-                maxOpen++;
-            } else if (c == ')') {
-                minOpen--;
-                maxOpen--;
-            } else {
-                // Treat '*' as '(', ')' or ''
-                minOpen--;
-                maxOpen++;
+        int low=0;
+        int high=0;
+        for(char c:s){
+            if(c=='('){
+                low++;
+                high++;
+            }else if(c==')'){
+                low--;
+                high--;
             }
-
-            // If maxOpen goes negative, too many closing brackets
-            if (maxOpen < 0) return false;
-
-            // minOpen can't be negative
-            minOpen = max(minOpen, 0);
-        }
-
-        // String is valid if all opens are closed
-        return minOpen == 0;
-        /*
-        int minOpen = 0, maxOpen = 0;
-
-        // Traverse each character in the string
-        for (char c : s) {
-            if (c == '(') {
-                minOpen++;
-                maxOpen++;
-            } else if (c == ')') {
-                minOpen--;
-                maxOpen--;
-            } else {
-                // Treat '*' as '(', ')' or ''
-                minOpen--;
-                maxOpen++;
+            else{
+                low--;
+                high++;
             }
-
-            // If maxOpen goes negative, too many closing brackets
-            if (maxOpen < 0) return false;
-
-            // minOpen can't be negative
-            minOpen = max(minOpen, 0);
+            if(high<0)return false;
+            low=max(low,0);
         }
-
-        // String is valid if all opens are closed
-        return minOpen == 0;*/
+        return low==0;
         
     }
 };
